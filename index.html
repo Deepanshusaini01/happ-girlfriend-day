@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#1a0010" />
+  <title>Happy Girlfriend Day 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating particles background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Main scene -->
+  <div class="scene" id="scene">
+
+    <!-- Top title -->
+    <div class="top-title">
+      <span class="title-small">for my</span>
+      <h1 class="title-main">Happy Girlfriend Day</h1>
+      <span class="title-small">💕 Click the heart to open your letter 💕</span>
+    </div>
+
+    <!-- Floating mini hearts around -->
+    <div class="mini-hearts" id="miniHearts"></div>
+
+    <!-- The big interactive heart -->
+    <div class="heart-container" id="heartContainer" onclick="openLetter()">
+      <div class="heart-pulse-ring"></div>
+      <div class="heart-pulse-ring delay1"></div>
+      <div class="heart-pulse-ring delay2"></div>
+      <div class="heart-icon" id="heartIcon">
+        <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="heartGrad" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#ff8fab"/>
+              <stop offset="60%" stop-color="#e91e8c"/>
+              <stop offset="100%" stop-color="#9b0060"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <path d="M50 85 C50 85 5 52 5 28 C5 14 16 5 28 5 C36 5 44 10 50 18 C56 10 64 5 72 5 C84 5 95 14 95 28 C95 52 50 85 50 85Z"
+            fill="url(#heartGrad)" filter="url(#glow)"/>
+          <!-- shine -->
+          <ellipse cx="35" cy="22" rx="9" ry="6" fill="rgba(255,255,255,0.25)" transform="rotate(-30 35 22)"/>
+        </svg>
+      </div>
+      <div class="click-hint" id="clickHint">tap me 💕</div>
+    </div>
+
+  </div>
+
+  <!-- Letter Overlay -->
+  <div class="letter-overlay" id="letterOverlay">
+    <div class="letter-wrapper" id="letterWrapper">
+
+      <!-- Envelope bottom -->
+      <div class="envelope" id="envelope">
+        <div class="envelope-body">
+          <div class="envelope-flap" id="envelopeFlap"></div>
+          <div class="envelope-inner"></div>
+        </div>
+      </div>
+
+      <!-- ===== LETTER 1 ===== -->
+      <div class="letter-card" id="letterCard">
+        <div class="corner-rose">🌹</div>
+        <button class="close-btn" id="closeBtn">
+          <span>✕</span>
+        </button>
+
+        <!-- Step 2: Tap this to open the letter -->
+        <div class="card-tap-overlay" id="cardTapOverlay">
+          <div class="tap-seal">
+            <div class="seal-icon">💌</div>
+            <div class="seal-text">Tap to open your letter</div>
+            <div class="seal-hearts">💕 💕 💕</div>
+          </div>
+        </div>
+
+        <div class="letter-scroll">
+          <div class="letter-header">
+            <div class="roses">🌹🌸🌹</div>
+            <h2 class="letter-title">To My Beautiful Girl</h2>
+            <div class="heart-divider">
+              <span>─────</span>
+              <span class="div-heart">♥</span>
+              <span>─────</span>
+            </div>
+          </div>
+
+          <div class="letter-body">
+            <p class="letter-para">
+              Every single day with you feels like a dream I never want to wake up from.
+              You are the most beautiful, wonderful, and magical person I have ever known.
+            </p>
+            <p class="letter-para">
+              Your smile is my favourite thing in this whole universe. 
+              It lights up every dark corner of my world and makes everything feel right.
+            </p>
+            <p class="letter-para">
+              On this special <strong>Girlfriend Day</strong>, I want you to know that
+              you are not just my girlfriend — you are my best friend, my home, 
+              my greatest adventure, and the love of my life. 💖
+            </p>
+            <p class="letter-para">
+              Thank you for choosing me. Thank you for your laughter, your hugs, 
+              your patience, and your love. I promise to cherish you every single day.
+            </p>
+          </div>
+
+          <div class="letter-footer">
+            <div class="heart-divider">
+              <span>─────</span>
+              <span class="div-heart">♥</span>
+              <span>─────</span>
+            </div>
+            <p class="sign-off">Forever yours,</p>
+            <p class="signature">With all my love 💕</p>
+            <div class="footer-roses">🌹🌷🌸🌷🌹</div>
+
+            <!-- ✨ Secret button to next letter -->
+            <button class="next-letter-btn" id="nextLetterBtn" onclick="explodeAndOpen()">
+              ✨ Click me ✨
+            </button>
+          </div>
+        </div><!-- end .letter-scroll -->
+      </div><!-- end letter 1 -->
+
+
+      <!-- ===== LETTER 2 — Happy Sawan Mishu ===== -->
+      <div class="letter-card letter-card-2" id="letterCard2">
+        <div class="corner-rose">🌙</div>
+        <button class="close-btn">
+          <span>✕</span>
+        </button>
+
+        <div class="letter-scroll">
+          <div class="letter-header">
+            <div class="roses">🌙🌸🌙</div>
+            <h2 class="letter-title letter-title-2">Happy Sawan, Mishu!</h2>
+            <div class="heart-divider">
+              <span>─────</span>
+              <span class="div-heart">♥</span>
+              <span>─────</span>
+            </div>
+          </div>
+
+          <div class="letter-body">
+            <p class="letter-para-2">
+              🌙 This holy, beautiful month of <strong>Sawan</strong> feels even more
+              magical because I get to spend it knowing you are mine. 
+              <strong>Happy Sawan, my darling Mishu!</strong>
+            </p>
+            <p class="letter-para-2">
+              You are the most <strong>special</strong> person in my entire world — 
+              more precious than every star in the night sky, more beautiful than 
+              every flower that blooms this season. 🌸
+            </p>
+            <p class="letter-para-2">
+              When you are <strong>happy</strong>, my heart fills with so much joy 
+              that I feel like the luckiest person alive. Your happiness is my happiness — 
+              your laughter is the most beautiful sound I have ever heard. 😊💖
+            </p>
+            <p class="letter-para-2">
+              And when you are <strong>sad</strong>, I am sad too — because your pain 
+              lives in my heart just as deeply. I never want to see tears in your eyes, 
+              and I will always be right here, holding your hand through everything. 🤝
+            </p>
+            <p class="letter-para-2">
+              You are not just my girlfriend, Mishu — you are my <strong>reason to smile</strong> 
+              every single morning. I love you more than words can ever say. 💕
+            </p>
+          </div>
+
+          <div class="letter-footer">
+            <div class="heart-divider">
+              <span>─────</span>
+              <span class="div-heart">♥</span>
+              <span>─────</span>
+            </div>
+            <p class="sign-off">Always and forever,</p>
+            <p class="signature">Deepu 🌙💕</p>
+            <div class="footer-roses">🌹🌙🌸🌙🌹</div>
+          </div>
+        </div><!-- end .letter-scroll -->
+      </div><!-- end letter 2 -->
+
+    </div>
+
+    <!-- Burst hearts when opening -->
+    <div class="burst-hearts" id="burstHearts"></div>
+
+    <!-- 1000 hearts explosion container -->
+    <div class="explosion-container" id="explosionContainer"></div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
