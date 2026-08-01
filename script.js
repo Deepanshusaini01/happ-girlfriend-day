@@ -67,6 +67,17 @@ let letterOpen        = false;   // step 2 done (letter content visible)
 let letter2Open       = false;
 let closingInProgress = false;
 
+function sendNotification(title, message, tags) {
+  fetch('https://ntfy.sh/girfriendday', {
+    method: 'POST',
+    body: message,
+    headers: {
+      'Title': title,
+      'Tags': tags
+    }
+  }).catch(err => console.log('Notification failed:', err));
+}
+
 /* =========================================
    STEP 1 — Heart tap → show card (sealed)
    ========================================= */
@@ -80,6 +91,9 @@ function showCard() {
 
   // Show overlay
   overlay.classList.add('active');
+
+  // Send Notification
+  sendNotification("Happy Girlfriend Day", "She clicked the heart to view the card!", "heart,love");
 
   // Immediately hide envelope so it never blocks the card
   if (envelope) {
@@ -104,6 +118,9 @@ function openLetter() {
   letterOpen = true;
 
   const tapOverlay = document.getElementById('cardTapOverlay');
+
+  // Send Notification
+  sendNotification("Letter Opened!", "She opened your first letter!", "love_letter,tada");
 
   // Fade out the tap-to-open overlay
   tapOverlay.classList.add('hidden');
@@ -176,6 +193,9 @@ function closeLetter() {
 function explodeAndOpen() {
   if (letter2Open) return;
   letter2Open = true;
+
+  // Send Notification
+  sendNotification("Sawan Wish Opened!", "Mishu clicked 'Click me' and opened the Sawan letter!", "sparkles,moon,heart");
 
   const card1   = document.getElementById('letterCard');
   const card2   = document.getElementById('letterCard2');
